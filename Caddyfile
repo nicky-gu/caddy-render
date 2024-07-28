@@ -1,7 +1,6 @@
 https://caddy-render-qxnw.onrender.com {
     tls {
         ca https://acme-v02.api.letsencrypt.org/directory
-        challenge http
     }
 
     route {
