@@ -1,11 +1,13 @@
 https://caddy-render-qxnw.onrender.com {
-    # 配置 Caddy 作为正向代理
-    forward_proxy {
-        # 不需要日志输出
-    }
+    route {
+        # 配置 Caddy 作为正向代理
+        forward_proxy {
+            # 不需要日志输出
+        }
 
-    # 使用反向代理配置
-    reverse_proxy {
-        header_up -Proxy-Authorization
+        # 使用反向代理配置
+        reverse_proxy {
+            header_up -Proxy-Authorization
+        }
     }
 }
