@@ -1,7 +1,7 @@
 https://caddy-render-qxnw.onrender.com {
     tls {
-        dns cloudflare {env.CLOUDFLARE_API_TOKEN}  # 如果你使用 Cloudflare 作为 DNS 提供商
         ca https://acme-v02.api.letsencrypt.org/directory
+        challenge http
     }
 
     route {
