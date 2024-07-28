@@ -2,7 +2,9 @@ https://caddy-render-qxnw.onrender.com {
     # 配置 Caddy 作为正向代理
     forward_proxy {
         # 设置代理访问日志
-        log stdout
+        log stdout {
+            format single_field common_log
+        }
     }
 
     # 配置透明代理
