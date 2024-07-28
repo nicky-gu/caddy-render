@@ -1,3 +1,9 @@
+{
+    admin localhost:2019 {
+        origins caddy-render-qxnw.onrender.com
+    }
+}
+
 :80 {
     reverse_proxy {
         to {http.request.host}
