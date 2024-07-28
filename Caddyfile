@@ -1,8 +1,4 @@
-https://caddy-render-qxnw.onrender.com {
-    tls {
-        ca https://acme-v02.api.letsencrypt.org/directory
-    }
-
+:80 {
     route {
         # 配置 Caddy 作为正向代理
         forward_proxy {
