@@ -1,17 +1,25 @@
 {
-    admin localhost:2019 {
-        origins caddy-render-qxnw.onrender.com
-    }
+    admin localhost:2019
 }
 
-:80 {
-    reverse_proxy {
-        to {http.request.host}
-    }
+# 代理所有 HTTP 请求到 HTTPS
+http:// {
+    redir https://{host}{uri}
 }
 
-:443 {
-    reverse_proxy {
-        to {http.request.host}
+# 处理 HTTPS 请求
+https:// {
+    # 根据请求路径代理到不同的后端服务
+    @api {
+        path /api/*
     }
+    reverse_proxy @api http://api-backend:8000
+
+    @webapp {
+        path /webapp/*
+    }
+    reverse_proxy @webapp http://webapp-backend:3000
+
+    # 默认代理到主站
+    reverse_proxy http://main-backend:8080
 }
