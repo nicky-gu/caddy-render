@@ -1,4 +1,4 @@
-https://your-custom-domain.com {
+https://caddy-render-qxnw.onrender.com {
     # 配置 Caddy 作为正向代理
     forward_proxy {
         # 设置代理访问日志
