@@ -1,25 +1,10 @@
-{
-    admin localhost:2019
-}
-
-# 代理所有 HTTP 请求到 HTTPS
-http:// {
-    redir https://{host}{uri}
-}
-
-# 处理 HTTPS 请求
-https:// {
-    # 根据请求路径代理到不同的后端服务
-    @api {
-        path /api/*
+https://your-custom-domain.com {
+    # 配置 Caddy 作为正向代理
+    forward_proxy {
+        # 设置代理访问日志
+        log stdout
     }
-    reverse_proxy @api http://api-backend:8000
 
-    @webapp {
-        path /webapp/*
-    }
-    reverse_proxy @webapp http://webapp-backend:3000
-
-    # 默认代理到主站
-    reverse_proxy http://main-backend:8080
+    # 配置透明代理
+    header_up -Proxy-Authorization
 }
