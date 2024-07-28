@@ -1,7 +1,10 @@
 https://caddy-render-qxnw.onrender.com {
     tls {
-        dns cloudflare {env.CLOUDFLARE_API_TOKEN}  # 确保你设置了 CLOUDFLARE_API_TOKEN 环境变量
         ca https://acme-v02.api.letsencrypt.org/directory
+    }
+
+    acme {
+        challenge http
     }
 
     route {
