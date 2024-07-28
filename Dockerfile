@@ -1,9 +1,10 @@
 # 使用官方的 Caddy builder 镜像
 FROM caddy:builder AS builder
 
-# 构建 Caddy 并包含 forward_proxy 插件
+# 构建 Caddy 并包含 forward_proxy 和 Cloudflare DNS 插件
 RUN xcaddy build \
-    --with github.com/caddyserver/forwardproxy
+    --with github.com/caddyserver/forwardproxy \
+    --with github.com/caddy-dns/cloudflare
 
 # 使用官方的 Caddy 镜像作为基础
 FROM caddy:latest
